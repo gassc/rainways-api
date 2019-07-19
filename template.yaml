@@ -19,7 +19,7 @@ Resources:
                 type: aws_proxy
                 uri: !Sub arn:${AWS::Partition}:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${TerrainTopo.Arn}/invocations
               responses: {}
-          landcover/summary:
+          /landcover/summary:
             post:
               x-amazon-apigateway-integration:
                 httpMethod: POST
@@ -70,15 +70,15 @@ Resources:
       Tracing: Active
       Policies:
         - AWSXrayWriteOnlyAccess
+      Layers:
+        - arn:aws:lambda:us-east-2:558340784565:layer:rainways_lyr1:5
       Events:
         rainwaysPOSTlandcoversummary:
           Type: Api
           Properties:
-            Path: landcover/summary
+            Path: /landcover/summary
             Method: POST
             RestApiId: !Ref rainways
-      Layers:
-        - arn:aws:lambda:us-east-2:558340784565:layer:rainways_lyr1:5
 Parameters:
   StackTagName:
     Type: String
