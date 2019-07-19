@@ -62,7 +62,7 @@ Resources:
       Description: !Sub
         - Stack ${StackTagName} Environment ${EnvironmentTagName} Function ${ResourceName}
         - ResourceName: LandcoverSummary
-      CodeUri: src/terrain_topo
+      CodeUri: src/landcover_summary
       Handler: app.lambda_handler
       Runtime: python3.7
       MemorySize: 3008
